@@ -201,7 +201,6 @@ Keputusan : P-Value < α maka tolak $H_0$
 
 Kesimpulan : Dengan taraf nyata 5% maka dapat disimpulkan bahwa terjadi kasus autokorelasi sisaan
 
-
 ### Non-Heteroskedastisitas
 Untuk membuktikan apakah terjadi kasus multikolinieritas atau tidak, maka dapat digunakan Breusch-Pagan Test yang terdapat pada packages lmtest
 
@@ -222,7 +221,6 @@ P-Value = 0,2337
 Keputusan : P-Value > α maka terima $H_0$
 
 Kesimpulan : Dengan taraf nyata 5% dapat disimpulkan bahwa asumsi non-heteroskedastisitas terpenuhi.
-
 
 ## Plot
 
