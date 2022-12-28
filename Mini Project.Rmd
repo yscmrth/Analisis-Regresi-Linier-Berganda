@@ -26,7 +26,6 @@ Library yang Dibutuhkan
 library("knitr")
 ```
 
-
 ```{r}
 library(tinytex)
 library(readxl)
@@ -39,18 +38,17 @@ library(lmtest)
 # PENDAHULUAN
 
 ## Latar Belakang 
-  Harga saham mencerminkan nilai sebuah perusahaan di hadapan para pembelinya. Jika harga saham semakin tinggi, berarti nilai perusahaan dianggap semakin tinggi juga. Kenaikan harga saham juga akan berimbas pada kenaikan pada angka indeks saham, dan begitu sebaliknya. Salah satu indeks harga saham syariah yang ada di Indonesia ialah *Jakarta Islamic Index* (JII) yang terdiri dari 30 saham syariah.
-  Permintaan dan penawaran antara pembeli dan penjual merupakan penentu harga saham. Besarnya permintaan dan penawaran dipengaruhi oleh faktor internal (mikro) dan faktor eksternal (makro) perusahaan. Faktor internal (mikro) yang berhubungan dengan kebijakan internal pada suatu perusahaan, dan faktor external (makro), yaitu hal-hal di luar kemampuan perusahaan atau di luar kemampuan manajemen untuk mengendalikan. Faktor makroekonomi merupakan faktor yang paling banyak mendapatkan perhatian dari para pelaku pasar modal. Perubahan atau perkembangan yang terjadi pada berbagai variabel ekonomi suatu negara akan memberikan pengaruh
+      Harga saham mencerminkan nilai sebuah perusahaan di hadapan para pembelinya. Jika harga saham semakin tinggi, berarti nilai perusahaan dianggap semakin tinggi juga. Kenaikan harga saham juga akan berimbas pada kenaikan pada angka indeks saham, dan begitu sebaliknya. Salah satu indeks harga saham syariah yang ada di Indonesia ialah *Jakarta Islamic Index* (JII) yang terdiri dari 30 saham syariah.
+      Permintaan dan penawaran antara pembeli dan penjual merupakan penentu harga saham. Besarnya permintaan dan penawaran dipengaruhi oleh faktor internal (mikro) dan faktor eksternal (makro) perusahaan. Faktor internal (mikro) yang berhubungan dengan kebijakan internal pada suatu perusahaan, dan faktor external (makro), yaitu hal-hal di luar kemampuan perusahaan atau di luar kemampuan manajemen untuk mengendalikan. Faktor makroekonomi merupakan faktor yang paling banyak mendapatkan perhatian dari para pelaku pasar modal. Perubahan atau perkembangan yang terjadi pada berbagai variabel ekonomi suatu negara akan memberikan pengaruh
 kepada pasar modal.
-  Berdasarkan data yang diperoleh dapat dijelaskan bahwa ke empat faktor ekonomi makro tersebut dapat mempengaruhi fluktuasi atau pergerakan indeks harga saham Jakarta Islamic Index. Nilai kurs rupiah terhadap dollar AS menjadi salah satu faktor yang turut mempengaruhi pergerakan indeks saham di pasar modal indonesia. Adapun kurs (niai tukar uang) adalah catatan harga pasar dari mata uang asing (Foreigen currency) dalam mata uang domestik atau resiprokalnya, yaitu mata uang domestik dalam mata uang asing
-  Kestabilan pergerakan nilai kurs menjadi sangat penting terlebih bagi perusahaan yang aktif dalam kegiatan ekspor impor yang tidak dapat terlepas dari penggunaan mata uang asing yaitu dollar Amerika Serikat sebagai alat transaksi atau mata uang yang sering digunakan dalam perdagangan. 
-  Faktor yang dapat mempengaruhi indeks harga saham di Jakarta Islamic Index yakni inflasi. Menurut Adiwarman, inflasi berarti kenaikan tingkat harga secara umum dari barang komoditas dan jasa selama suatu periode waktu tertentu.Dengan adanya tingkat inflasi yang tinggi, harga-harga akan naik secara terus-menerus. Meningkatnya inflasi secara relatif adalah signal negatif bagi para investor. Dilihat dari segi konsumen, inflasi yang tinggi akan mengakibatkan daya beli konsumen (masyarakat) menurun. Jika dilihat dari segi perusahaan, inflasi dapat meningkatkan pendapatan dan biaya perusahaan. Jika peningkatan biaya faktor produksi lebih tinggi dari peningkatan harga yang dapat dinikmati oleh perusahaan, profitabilitas perusahaan akan menurun sehingga akan menurunkan pembagian dividen dan daya beli masyarakat juga menurun. 
-  Dalam penelitian ini, dilakukan analisis regresi untuk mengetahui pengaruh kurs Dollar Amerika terhadap Rupiah (USD/ Rp) dan inflasi terhadap indeks saham *Jakarta Islamic Index*
+      Berdasarkan data yang diperoleh dapat dijelaskan bahwa ke empat faktor ekonomi makro tersebut dapat mempengaruhi fluktuasi atau pergerakan indeks harga saham Jakarta Islamic Index. Nilai kurs rupiah terhadap dollar AS menjadi salah satu faktor yang turut mempengaruhi pergerakan indeks saham di pasar modal indonesia. Adapun kurs (niai tukar uang) adalah catatan harga pasar dari mata uang asing (Foreigen currency) dalam mata uang domestik atau resiprokalnya, yaitu mata uang domestik dalam mata uang asing
+      Kestabilan pergerakan nilai kurs menjadi sangat penting terlebih bagi perusahaan yang aktif dalam kegiatan ekspor impor yang tidak dapat terlepas dari penggunaan mata uang asing yaitu dollar Amerika Serikat sebagai alat transaksi atau mata uang yang sering digunakan dalam perdagangan. 
+      Faktor yang dapat mempengaruhi indeks harga saham di Jakarta Islamic Index yakni inflasi. Menurut Adiwarman, inflasi berarti kenaikan tingkat harga secara umum dari barang komoditas dan jasa selama suatu periode waktu tertentu.Dengan adanya tingkat inflasi yang tinggi, harga-harga akan naik secara terus-menerus. Meningkatnya inflasi secara relatif adalah signal negatif bagi para investor. Dilihat dari segi konsumen, inflasi yang tinggi akan mengakibatkan daya beli konsumen (masyarakat) menurun. Jika dilihat dari segi perusahaan, inflasi dapat meningkatkan pendapatan dan biaya perusahaan. Jika peningkatan biaya faktor produksi lebih tinggi dari peningkatan harga yang dapat dinikmati oleh perusahaan, profitabilitas perusahaan akan menurun sehingga akan menurunkan pembagian dividen dan daya beli masyarakat juga menurun. 
+      Dalam penelitian ini, dilakukan analisis regresi untuk mengetahui pengaruh kurs Dollar Amerika terhadap Rupiah (USD/ Rp) dan inflasi terhadap indeks saham *Jakarta Islamic Index*
 
 
 ## Tinjauan Pustaka
 Regresi linear merupakan metode statistika yang digunakan untuk membentuk model atau hubungan antara sebuah variabel respons Y dengan satu atau lebih variabel bebas X.
-
 Analisis regresi dengan satu variabel bebas X disebut regresi linear sederhana, sedangkan jika terdapat lebih dari satu variabel bebas X, disebut sebagai regresi linier berganda
 
 Model Regresi dapat dinyatakan sebagai berikut :
@@ -67,7 +65,6 @@ $\beta_nX_n$                   : Nilai koefisien regresi variabel Xn
 # Hasil dan Pembahasan
 ## Data
 Data yang digunakan merupakan data sekunder yang diperoleh dari hasil penelitian pada skripsi Rifqi Fatih. yang berjudul “Analisis PengaruhKurs Dollar Amerika/Rupiah (USD/Rp) dan Inflasi Terhadap Jakarta Islamic Index (JII)” yang berasal dari Jurusan Akuntansi Fakultas Ekonomi dan Bisnis Universitas Brawijaya. Adapun variabel dependennya adalah Indeks Saham JII yang merupakan data berskala interval, sedangkan variabel independennya adalah kurs dan inflasi yang merupakan data berskala rasio.
-
 
 ## Melakukan Analisis Regresi
 ### Impor Dataset Excel
@@ -248,13 +245,7 @@ par(mfrow=c(2,2))
 plot <- plot(Model_Regresi)
 ```
 
-
-
 # DAFTAR PUSTAKA
 Sumara, Rauzan. (2015). Analisis Regresi Berganda Menggunakan Software R. Makalah.
-
 Syilfi, Ispriyanti, D., Safitri, D. (2012). Analisis Regresi Linier Piecewise Dua Segmen. Jurnal Gaussian, 1(1). 
-
 Wibowo, R. M. (2018). "Pengaruh Kurs (IDR/USD), Inflasi, Suku Bunga BI, Dan Jumlah Uang Beredar (M2) Terhadap Indeks Harga Saham Jakarta Islamic Index di Bursa Efek Indonesia (BEI) Periode Januari 2013 - Desember 2017". Skripsi. Purwokerto :  IAIN Purwokerto.
-
-
