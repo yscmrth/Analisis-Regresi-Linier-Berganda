@@ -1,0 +1,260 @@
+---
+title: Analisis Pengaruh Kurs Dollar Amerika/ Rupiah (USD/ Rp) dan Inflasi Terhadap Jakarta Islamic Index (JII)
+author: "Yessica Maretha Simanjuntak"
+date: "5/22/2022"
+output:
+  prettydoc::html_pretty:
+    theme: hpstr
+    highlight: github
+    toc: true
+    number_sections: true
+---
+
+```{r include=FALSE}
+library(knitr)
+opts_chunk$set(message = FALSE)
+opts_chunk$set(warning = FALSE)
+opts_chunk$set(comment = "")
+opts_chunk$set(collapse = TRUE)
+opts_chunk$set(error = TRUE)
+opts_chunk$set(prompt = TRUE)
+opts_chunk$set(fig.align = 'center')
+```
+
+Library yang Dibutuhkan
+```{r}
+library("knitr")
+```
+
+
+```{r}
+library(tinytex)
+library(readxl)
+library(magrittr)
+library(tseries)
+library(car)
+library(lmtest)
+
+```
+# PENDAHULUAN
+
+## Latar Belakang 
+  Harga saham mencerminkan nilai sebuah perusahaan di hadapan para pembelinya. Jika harga saham semakin tinggi, berarti nilai perusahaan dianggap semakin tinggi juga. Kenaikan harga saham juga akan berimbas pada kenaikan pada angka indeks saham, dan begitu sebaliknya. Salah satu indeks harga saham syariah yang ada di Indonesia ialah *Jakarta Islamic Index* (JII) yang terdiri dari 30 saham syariah.
+  Permintaan dan penawaran antara pembeli dan penjual merupakan penentu harga saham. Besarnya permintaan dan penawaran dipengaruhi oleh faktor internal (mikro) dan faktor eksternal (makro) perusahaan. Faktor internal (mikro) yang berhubungan dengan kebijakan internal pada suatu perusahaan, dan faktor external (makro), yaitu hal-hal di luar kemampuan perusahaan atau di luar kemampuan manajemen untuk mengendalikan. Faktor makroekonomi merupakan faktor yang paling banyak mendapatkan perhatian dari para pelaku pasar modal. Perubahan atau perkembangan yang terjadi pada berbagai variabel ekonomi suatu negara akan memberikan pengaruh
+kepada pasar modal.
+  Berdasarkan data yang diperoleh dapat dijelaskan bahwa ke empat faktor ekonomi makro tersebut dapat mempengaruhi fluktuasi atau pergerakan indeks harga saham Jakarta Islamic Index. Nilai kurs rupiah terhadap dollar AS menjadi salah satu faktor yang turut mempengaruhi pergerakan indeks saham di pasar modal indonesia. Adapun kurs (niai tukar uang) adalah catatan harga pasar dari mata uang asing (Foreigen currency) dalam mata uang domestik atau resiprokalnya, yaitu mata uang domestik dalam mata uang asing
+  Kestabilan pergerakan nilai kurs menjadi sangat penting terlebih bagi perusahaan yang aktif dalam kegiatan ekspor impor yang tidak dapat terlepas dari penggunaan mata uang asing yaitu dollar Amerika Serikat sebagai alat transaksi atau mata uang yang sering digunakan dalam perdagangan. 
+  Faktor yang dapat mempengaruhi indeks harga saham di Jakarta Islamic Index yakni inflasi. Menurut Adiwarman, inflasi berarti kenaikan tingkat harga secara umum dari barang komoditas dan jasa selama suatu periode waktu tertentu.Dengan adanya tingkat inflasi yang tinggi, harga-harga akan naik secara terus-menerus. Meningkatnya inflasi secara relatif adalah signal negatif bagi para investor. Dilihat dari segi konsumen, inflasi yang tinggi akan mengakibatkan daya beli konsumen (masyarakat) menurun. Jika dilihat dari segi perusahaan, inflasi dapat meningkatkan pendapatan dan biaya perusahaan. Jika peningkatan biaya faktor produksi lebih tinggi dari peningkatan harga yang dapat dinikmati oleh perusahaan, profitabilitas perusahaan akan menurun sehingga akan menurunkan pembagian dividen dan daya beli masyarakat juga menurun. 
+  Dalam penelitian ini, dilakukan analisis regresi untuk mengetahui pengaruh kurs Dollar Amerika terhadap Rupiah (USD/ Rp) dan inflasi terhadap indeks saham *Jakarta Islamic Index*
+
+
+## Tinjauan Pustaka
+Regresi linear merupakan metode statistika yang digunakan untuk membentuk model atau hubungan antara sebuah variabel respons Y dengan satu atau lebih variabel bebas X.
+
+Analisis regresi dengan satu variabel bebas X disebut regresi linear sederhana, sedangkan jika terdapat lebih dari satu variabel bebas X, disebut sebagai regresi linier berganda
+
+Model Regresi dapat dinyatakan sebagai berikut :
+$$
+Y = \alpha+\beta_1X_1+\beta_2X_2+...+\beta_nX_n
+$$
+di mana:  
+$Y$                            : Model regresi linear  
+$\alpha$                       : Intersep/ konstanta  
+$\beta_1X_1$                   : Nilai koefisien regresi variabel X1  
+$\beta_2X_2$                   : Nilai koefisien regresi variabel X2  
+$\beta_nX_n$                   : Nilai koefisien regresi variabel Xn
+
+# Hasil dan Pembahasan
+## Data
+Data yang digunakan merupakan data sekunder yang diperoleh dari hasil penelitian pada skripsi Rifqi Fatih. yang berjudul “Analisis PengaruhKurs Dollar Amerika/Rupiah (USD/Rp) dan Inflasi Terhadap Jakarta Islamic Index (JII)” yang berasal dari Jurusan Akuntansi Fakultas Ekonomi dan Bisnis Universitas Brawijaya. Adapun variabel dependennya adalah Indeks Saham JII yang merupakan data berskala interval, sedangkan variabel independennya adalah kurs dan inflasi yang merupakan data berskala rasio.
+
+
+## Melakukan Analisis Regresi
+### Impor Dataset Excel
+```{r}
+regresi <- read.csv("E:/KULIAH/SEMESTER 4/Komputasi Statistika/indekssaham.csv", sep ="," , header = TRUE)
+
+```
+### Membentuk Dataframe
+```{r}
+data<-data.frame(regresi)
+```
+
+### Memanggil data
+```{r}
+X1<-data$Kurs_USD_Rp
+X1
+X2<-data$Inflasi
+X2
+Y<-data$Indeks_Saham
+Y
+```
+
+### Analisis Regresi Linear
+```{r}
+Model_Regresi <- lm(formula = Indeks_Saham ~ Kurs_USD_Rp + Inflasi, data = regresi)
+summary(Model_Regresi)
+```
+
+## Statistika Deskriptif
+```{r}
+summary(data)
+```
+1. Mean  
+X1    : Rata-rata besar kurs Dollar Amerika terhadap Rupiah adalah 9422
+```{r}
+mean(X1)
+```
+X2    : Rata-rata besar kurs Dollar Amerika terhadap Rupiah adalah 6423
+```{r}
+mean(X2)
+```
+Y     : Rata-rata indeks saham adalah 415.9
+```{r}
+mean(Y)
+```
+  
+2. Max
+X1    : Nilai kurs Dollar terhadap Rupiah terbesar adalah 11853
+```{r}
+max(X1)
+```
+X2    : Tingkat inflasi terbesar adalah 12140
+```{r}
+max(X2)
+```
+Y     : Nilai indeks saham Jakarta Islamic Index terbesar adalah 567.1   
+```{r}
+max(Y)
+```
+  
+3. Min
+X1    : Nilai kurs Dollar terhadap Rupiah terkecil adalah 8532 
+```{r}
+min(X1)
+```
+X2    : Tingkat inflasi terkecil adalah 2410 
+```{r}
+min(X2)
+```
+Y     : Nilai indeks saham Jakarta Islamic Index terkecil adalah 193.7 
+```{r}
+min(Y)
+```
+
+## Asumsi
+
+### Normalitas
+Untuk melakukan uji normalitas, kita dapat menggunakan Jarque–Bera Test yang terdapat pada package
+tseries dengan perintah : jarque.bera.test (x)
+
+Hipotesis
+
+$H_0$ : Sisaan menyebar normal
+
+$H_1$ : Sisaan tidak menyebar normal
+
+α = 0,01
+
+```{r}
+library(tseries)
+Norm <- jarque.bera.test(Model_Regresi$residuals)
+Norm
+```
+
+Keputusan : P-Value > alpha maka terima $H_0$
+
+Kesimpulan : Dengan taraf nyata 1% dapat disimpulkan bahwa sisaan sudah menyebar normal
+
+
+### Non-Multikolinieritas
+Untuk mengetahui apakah terjadi kasus multikolinieritas atau tidak, kita dapat melihat nilai VIF (Variance Inflation Factor).
+
+```{r}
+nonmultikol <- vif(Model_Regresi)
+nonmultikol
+```
+VIF kurs = 1,095607
+
+VIF inflasi = 1,095607
+
+Kesimpulan : Karena nilai VIF < 10, maka dapat disimpulkan bahwa asumsi Non-Multikolinieritas terpenuhi
+
+
+### Non-Autokorelasi
+Untuk mengetahui apakah asumsi Non-Autokorelasi sudah terpenuhi maka dapat dibuktikan dengan Durbin Watson Test.
+
+Hipotesis
+
+$H_0$: Tidak terjadi autokorelasi antar sisaan
+
+$H_1$ : Terjadi autokorelasi antar sisaan
+
+α = 0,05
+
+```{r}
+nonautokor <- dwtest(Model_Regresi)
+nonautokor
+```
+
+Diperoleh nilai statistik uji chi-squared = 33,252
+P-Value = 8,096 x 10^-9
+
+Keputusan : P-Value < α maka tolak $H_0$
+
+Kesimpulan : Dengan taraf nyata 5% maka dapat disimpulkan bahwa terjadi kasus autokorelasi sisaan
+
+
+### Non-Heteroskedastisitas
+Untuk membuktikan apakah terjadi kasus multikolinieritas atau tidak, maka dapat digunakan Breusch-Pagan Test yang terdapat pada packages lmtest
+
+$H_0$ : Tidak terjadi heteroskedastisitas
+
+$H_1$ : Terjadi heteroskedastisitas
+
+α = 0,05
+
+```{r}
+nonhetero <- bptest(Model_Regresi)
+nonhetero
+```
+
+Didapatkan statistik uji chi-squared = 2,9071
+P-Value = 0,2337
+
+Keputusan : P-Value > α maka terima $H_0$
+
+Kesimpulan : Dengan taraf nyata 5% dapat disimpulkan bahwa asumsi non-heteroskedastisitas terpenuhi.
+
+
+## Plot
+
+```{r}
+library(rmarkdown)
+paged_table(as.data.frame(regresi))
+```
+
+### boxplot
+
+```{r}
+boxplot <- boxplot(fitted(Model_Regresi),main="Boxplot Fitted Value")
+boxplot
+```
+
+### Plot Model
+
+```{r}
+par(mfrow=c(2,2))
+plot <- plot(Model_Regresi)
+```
+
+
+
+# DAFTAR PUSTAKA
+Sumara, Rauzan. (2015). Analisis Regresi Berganda Menggunakan Software R. Makalah.
+
+Syilfi, Ispriyanti, D., Safitri, D. (2012). Analisis Regresi Linier Piecewise Dua Segmen. Jurnal Gaussian, 1(1). 
+
+Wibowo, R. M. (2018). "Pengaruh Kurs (IDR/USD), Inflasi, Suku Bunga BI, Dan Jumlah Uang Beredar (M2) Terhadap Indeks Harga Saham Jakarta Islamic Index di Bursa Efek Indonesia (BEI) Periode Januari 2013 - Desember 2017". Skripsi. Purwokerto :  IAIN Purwokerto.
+
+
